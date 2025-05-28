@@ -13,12 +13,13 @@ const port=process.env.PORT || 3001
 const databaseURL=process.env.DATABASE_URL;
 app.use(cors({
     origin: [
-        "https://chat-app-ruddy-phi-27.vercel.app", // your Vercel frontend URL
+        "https://chat-app-git-main-sanchay-baghels-projects.vercel.app", // <-- add this!
+        "https://chat-app-ruddy-phi-27.vercel.app", // any other Vercel URLs you use
         "http://localhost:5173"
     ],
-    methods:["GET","POST","PUT","PATCH","DELETE"],
-    credentials:true
-}))
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true
+}));
 
 app.use(cookieParser())
 app.use(express.json())
