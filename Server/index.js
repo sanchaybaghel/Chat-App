@@ -12,7 +12,10 @@ const app=express()
 const port=process.env.PORT || 3001
 const databaseURL=process.env.DATABASE_URL;
 app.use(cors({
-    origin:[process.env.ORIGIN],
+    origin: [
+        "https://chat-app-ruddy-phi-27.vercel.app", // your Vercel frontend URL
+        "http://localhost:5173"
+    ],
     methods:["GET","POST","PUT","PATCH","DELETE"],
     credentials:true
 }))
