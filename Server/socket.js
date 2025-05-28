@@ -5,7 +5,9 @@ import Message from "./models/MessagesModel.js";
 const setupSocket=(server)=>{
     const io=new SocketIOServer(server,{
         cors:{
-            origin:[process.env.ORIGIN],
+            origin:["https://chat-app-git-main-sanchay-baghels-projects.vercel.app",
+        "https://chat-app-ruddy-phi-27.vercel.app",
+        "http://localhost:5173"],
             methods:["GET","POST","PUT","PATCH","DELETE"],
             credentials:true,
         }
