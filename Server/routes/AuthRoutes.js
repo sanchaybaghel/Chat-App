@@ -35,7 +35,7 @@ authRotes.post(
   addProfileImage
 );
 
-authRotes.delete("remove-profile-image", verifyToken, removeProfileImage);
+authRotes.delete("/remove-profile-image", verifyToken, removeProfileImage);
 authRotes.post('/logout',logout)
 
 export default authRotes;

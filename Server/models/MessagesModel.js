@@ -16,7 +16,7 @@ const messageSchema=new mongoose.Schema({
         enum:["text","image","video","audio","file"],
         required:[true,"Message type is required"],
     },
-    timeStamp:{
+    timestamp:{
         type:Date,
         default:Date.now,
     },

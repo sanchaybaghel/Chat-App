@@ -1,7 +1,7 @@
 import userAppStore from "@/store";
 import moment from "moment";
 import React, { useEffect, useRef } from "react";
-import { HOST } from "@/utils/constants";
+
 import { ApiClient } from "@/lib/Api-client";
 import { GET_ALL_MESSAGES_ROUTES } from "@/utils/constants";
 import { MdFolder } from "react-icons/md";
@@ -22,8 +22,8 @@ const MessageContainer = () => {
         });
        
         if (res.data.messages) {
-          const sortedMessages = res.data.messages.sort((a, b) => 
-            new Date(a.timeStamp) - new Date(b.timeStamp)
+          const sortedMessages = res.data.messages.sort((a, b) =>
+            new Date(a.timestamp) - new Date(b.timestamp)
           );
           setSelectedChatMessages(sortedMessages);
         }
@@ -137,15 +137,15 @@ const MessageContainer = () => {
   const renderMessages = () => {
     let lastDate = null;
     return selectedChatMessage.map((message) => {
-      const messageDate = moment(message.timeStamp).format("YYYY-MM-DD");
+      const messageDate = moment(message.timestamp).format("YYYY-MM-DD");
       const showDate = messageDate !== lastDate;
       lastDate = messageDate;
-      
+
       return (
         <div key={message._id}>
           {showDate && (
             <div className="text-center text-gray-500 my-2">
-              {moment(message.timeStamp).format("LL")}
+              {moment(message.timestamp).format("LL")}
             </div>
           )}
           {selectedChatType === "contact" && renderDMMessages(message)}

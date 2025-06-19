@@ -13,21 +13,21 @@ const setupSocket=(server)=>{
         }
     })
 
-    const userSocet=new Map()
+    const userSocket=new Map()
     const disconnect=(socket)=>{
        console.log(`Client Disconnected: ${socket.id}`);
-       for(const [userId,socketId] of userSocet.entries()){
+       for(const [userId,socketId] of userSocket.entries()){
         if(socketId===socket.id){
-            userSocet.delete(userId)
+            userSocket.delete(userId)
             break;
         }
        }
     }
 
-    const sendMessage = async (message, senderId, recipientId) => {
+    const sendMessage = async (message) => {
         try {
-            const senderSocketId = userSocet.get(message.sender);
-            const recipientSocketId = userSocet.get(message.recipient);
+            const senderSocketId = userSocket.get(message.sender);
+            const recipientSocketId = userSocket.get(message.recipient);
             
             console.log("Creating message:", message);
             console.log("Socket IDs - Sender:", senderSocketId, "Recipient:", recipientSocketId);
@@ -58,7 +58,7 @@ const setupSocket=(server)=>{
     io.on("connection", (socket) => {
         const userId = socket.handshake.query.userId;
         if (userId) {
-            userSocet.set(userId, socket.id);
+            userSocket.set(userId, socket.id);
             console.log(`User connected: ${userId} with socket ID ${socket.id}`);
         } else {
             console.log("User not connected");
@@ -73,13 +73,13 @@ const setupSocket=(server)=>{
         socket.on("sendMessage", async (messageData, callback) => {
             console.log("Message received:", messageData);
             try {
-                const result = await sendMessage({
+                await sendMessage({
                     sender: messageData.sender,
                     recipient: messageData.recipient,
                     messageType: messageData.messageType,
                     content: messageData.content,
                     fileUrl: messageData.fileUrl
-                }, messageData.sender, messageData.recipient);
+                });
                 
                 if (callback && typeof callback === 'function') {
                     callback({ success: true, message: "Message sent successfully" });

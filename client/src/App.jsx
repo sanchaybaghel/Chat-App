@@ -84,7 +84,7 @@ const App = () => {
         <Route
           path="*"
           element={
-            userInfo ? <Navigate to="/chat/12" /> : <Navigate to="/auth" />
+            userInfo ? <Navigate to="/chat" /> : <Navigate to="/auth" />
           }
         />
       </Routes>

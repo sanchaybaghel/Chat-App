@@ -30,16 +30,14 @@ export const SocketProvider = ({ children }) => {
         
         if (
           selectedChatType !== undefined &&
-          selectedChatData && 
+          selectedChatData &&
           (selectedChatData._id === message.sender._id ||
             selectedChatData._id === message.recipient._id)
         ) {
           console.log("Message added to chat:", message);
           // Use the store's actions properly
-          userAppStore.setState(state => ({
-            ...state,
-            selectedChatMessage: [...state.selectedChatMessage, message]
-          }));
+          const { setSelectedChatMessages, selectedChatMessage } = userAppStore.getState();
+          setSelectedChatMessages([...selectedChatMessage, message]);
         }
       };
 
