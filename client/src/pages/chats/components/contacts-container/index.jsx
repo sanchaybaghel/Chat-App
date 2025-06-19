@@ -20,7 +20,7 @@ const ContactsContainer = () => {
      // console.log("res",res);
     }
     getContacts();
-  })
+  }, [])
   return (
     <div className="relative md:w-min-[250px] bg-[#1b1c24] border-r-2 border-[#2f303b] flex flex-col h-full overflow-y-auto">
       <div className="pt-3">
