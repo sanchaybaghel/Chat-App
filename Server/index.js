@@ -15,11 +15,7 @@ const databaseURL=process.env.DATABASE_URL;
 console.log("port",port)
 console.log("databaseURL",process.env.DATABASE_URL)
 app.use(cors({
-    origin: [
-        "https://chat-app-git-main-sanchay-baghels-projects.vercel.app", // <-- add this!
-        "https://chat-app-ruddy-phi-27.vercel.app", // any other Vercel URLs you use
-        "http://localhost:5173"
-    ],
+    origin: "https://chat-app-ruddy-phi-27.vercel.app", 
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true
 }));
