@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+console.log("hello");
 import Auth from "./pages/auth";
 import Chat from "./pages/chats";
 import Profile from "./pages/profile";

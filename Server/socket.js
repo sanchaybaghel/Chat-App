@@ -1,4 +1,4 @@
-
+console.log("socket.js")
 
 import {Server as SocketIOServer} from "socket.io";
 import Message from "./models/MessagesModel.js";

@@ -1,3 +1,4 @@
+
 import express from "express";
 import dotenv from "dotenv"
 import cors from "cors"
@@ -11,6 +12,8 @@ dotenv.config()
 const app=express()
 const port=process.env.PORT || 3001
 const databaseURL=process.env.DATABASE_URL;
+console.log("port",port)
+console.log("databaseURL",process.env.DATABASE_URL)
 app.use(cors({
     origin: [
         "https://chat-app-git-main-sanchay-baghels-projects.vercel.app", // <-- add this!
@@ -26,6 +29,9 @@ app.use(express.json())
 app.use("/api/auth",authRotes)
 app.use("/api/contacts",contactsRoutes)
 app.use("/api/messages",messagesRoutes)
+app.get("/",(req,res)=>{
+    res.send("Hello World!")
+})
 const server=app.listen(port,(req,res)=>{
 },console.log(`Server is running at http://localhost:${port}`))
 

@@ -12,6 +12,7 @@ import userAppStore from "@/store";
 import { UserIcon } from "lucide-react";
 
 const Auth = () => {
+
   const navigate = useNavigate();
   const { userInfo,setUserInfo } = userAppStore();
   const [email, setEmail] = useState("");
@@ -78,6 +79,7 @@ const Auth = () => {
       try {
         const res = await ApiClient.post(SIGNUP_ROUTE, { email, password }, { withCredentials: true });
         console.log({ res });
+        console.log("req.data",res.data)
         if (res.status === 201) {
           setUserInfo(res.data.user);
           navigate("/profile");
